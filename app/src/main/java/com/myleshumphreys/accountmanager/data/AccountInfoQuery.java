@@ -1,10 +1,6 @@
 package com.myleshumphreys.accountmanager.data;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
-import com.myleshumphreys.accountmanager.models.AccountInfo;
 
 public class AccountInfoQuery {
 
@@ -12,7 +8,7 @@ public class AccountInfoQuery {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_VALUE = "value";
     private static final String COLUMN_ACCOUNT_ID = "accountId";
-    private static final String COLUMN_WIDGET_ID = "elementId";
+    private static final String COLUMN_WIDGET_ID = "widgetId";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME
             + "( "

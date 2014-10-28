@@ -8,7 +8,7 @@ public class WidgetItemQuery {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "widgetName";
     private static final String COLUMN_TYPE = "widgetType";
-    private static final String COLUMN_IMAGE_ID = "widgetImage";
+    private static final String COLUMN_IMAGE_ID = "widgetImageId";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME
             + "( "

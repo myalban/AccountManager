@@ -1,21 +1,20 @@
 package com.myleshumphreys.accountmanager.data;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
-import com.myleshumphreys.accountmanager.models.Account;
 
 public class AccountQuery {
 
     private static final String TABLE_NAME = "Account";
     private static final String COLUMN_ID = "id";
-    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_ASSOCIATION = "association";
+    private static final String COLUMN_USER_ID = "userId";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME
             + "( "
             + COLUMN_ID + " INTEGER PRIMARY KEY, "
-            + COLUMN_NAME + " TEXT, "
+            + COLUMN_ASSOCIATION + " TEXT, "
+            + COLUMN_USER_ID + " INTEGER, "
+            + "FOREIGN KEY(" + COLUMN_USER_ID + ") REFERENCES User(id) ON DELETE CASCADE"
             + ") ";
 
     private Context context = null;
