@@ -13,11 +13,11 @@ public class WidgetItemImageQuery {
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME
             + "( "
             + COLUMN_ID + " INTEGER PRIMARY KEY, "
-            + COLUMN_IMAGE + " BLOB, "
+            + COLUMN_IMAGE + " BLOB "
             + ") ";
 
-    public static final String INSERT_DEFAULT_DATA = "INSERT INTO " + TABLE_NAME
-            + "(" + COLUMN_ID + COLUMN_IMAGE + ") VALUES ( 1, " + imageLocation + ") ";
+//    public static final String INSERT_DEFAULT_DATA = "INSERT INTO " + TABLE_NAME
+//            + "(" + COLUMN_ID + COLUMN_IMAGE + ") VALUES ( 1, " + imageLocation + ") ";
 
     private Context context = null;
 

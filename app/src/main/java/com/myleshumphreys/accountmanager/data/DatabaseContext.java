@@ -17,13 +17,14 @@ public class DatabaseContext extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase _db) {
-        _db.execSQL(WidgetItemImageQuery.CREATE_TABLE);
-        _db.execSQL(WidgetItemImageQuery.INSERT_DEFAULT_DATA);
-        _db.execSQL(WidgetItemQuery.CREATE_TABLE);
-        _db.execSQL(WidgetItemQuery.INSERT_DEFAULT_DATA);
+        _db.execSQL(UserQuery.CREATE_TABLE);
         _db.execSQL(AccountQuery.CREATE_TABLE);
         _db.execSQL(AccountInfoQuery.CREATE_TABLE);
-        _db.execSQL(UserQuery.CREATE_TABLE);
+        _db.execSQL(WidgetItemQuery.CREATE_TABLE);
+        _db.execSQL(WidgetItemImageQuery.CREATE_TABLE);
+
+       // _db.execSQL(WidgetItemImageQuery.INSERT_DEFAULT_DATA);
+        //_db.execSQL(WidgetItemQuery.INSERT_DEFAULT_DATA);
     }
 
     @Override

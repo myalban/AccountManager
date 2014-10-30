@@ -16,6 +16,7 @@ public class WidgetItemQuery {
             + COLUMN_NAME + " TEXT, "
             + COLUMN_TYPE + " TEXT, "
             + COLUMN_IMAGE_ID + " INTEGER, "
+            + "FOREIGN KEY(" + COLUMN_IMAGE_ID + ") REFERENCES WidgetItemImage(id) ON DELETE CASCADE"
             + ") ";
 
     public static final String INSERT_DEFAULT_DATA = "INSERT INTO " + TABLE_NAME

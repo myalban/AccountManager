@@ -16,7 +16,7 @@ public class AccountInfoQuery {
             + COLUMN_VALUE + " TEXT, "
             + COLUMN_ACCOUNT_ID + " INTEGER, "
             + COLUMN_WIDGET_ID + " INTEGER, "
-            + "FOREIGN KEY(" + COLUMN_ACCOUNT_ID + ") REFERENCES Account(id) ON DELETE CASCADE"
+            + "FOREIGN KEY(" + COLUMN_ACCOUNT_ID + ") REFERENCES Account(id) ON DELETE CASCADE,"
             + "FOREIGN KEY(" + COLUMN_WIDGET_ID + ") REFERENCES WidgetItem(id) ON DELETE CASCADE"
             + ") ";
 
