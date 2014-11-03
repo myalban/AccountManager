@@ -1,6 +1,13 @@
 package com.myleshumphreys.accountmanager.data;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.myleshumphreys.accountmanager.models.AccountInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountInfoQuery {
 
@@ -20,9 +27,33 @@ public class AccountInfoQuery {
             + "FOREIGN KEY(" + COLUMN_WIDGET_ID + ") REFERENCES WidgetItem(id) ON DELETE CASCADE"
             + ") ";
 
+    public static final String INSERT_DEFAULT_DATA = "INSERT INTO " + TABLE_NAME
+            + "(id, value, accountId, widgetId ) VALUES ( 1, 'email@email.com', 1, 1 )";
+
     private Context context = null;
 
     public AccountInfoQuery(Context context) {
         this.context = context;
+    }
+
+    public List<AccountInfo> getAccountInfo(int accountId) {
+        List<AccountInfo> accounts = new ArrayList<AccountInfo>();
+        SQLiteDatabase db = DatabaseContext.getInstance(this.context).getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME
+                + " WHERE " + COLUMN_ACCOUNT_ID + " = " + accountId, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                accounts.add(new AccountInfo(
+                        Integer.parseInt(cursor.getString(0)),
+                        cursor.getString(1),
+                        Integer.parseInt(cursor.getString(2)),
+                        Integer.parseInt(cursor.getString(3))));
+            }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return accounts;
     }
 }

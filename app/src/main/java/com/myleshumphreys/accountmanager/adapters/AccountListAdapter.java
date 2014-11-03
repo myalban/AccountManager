@@ -36,7 +36,7 @@ public class AccountListAdapter extends BaseAdapter {
             mViewHolder = (MyViewHolder) convertView.getTag();
         }
 
-        mViewHolder.accountName = detail(convertView, R.id.textViewAccountAssociation, accountList.get(position).getName());
+        mViewHolder.association = detail(convertView, R.id.textViewAccountAssociation, accountList.get(position).getName());
 
         return convertView;
     }
@@ -48,7 +48,7 @@ public class AccountListAdapter extends BaseAdapter {
     }
 
     private class MyViewHolder {
-        TextView accountName;
+        TextView association;
     }
 
     @Override

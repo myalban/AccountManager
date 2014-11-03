@@ -28,6 +28,14 @@
             android:name="com.myleshumphreys.accountmanager.activities.RecoverActivity"
             android:label="@string/title_activity_recover" >
         </activity>
+        <activity
+            android:name="com.myleshumphreys.accountmanager.activities.AccountInfoActivity"
+            android:label="@string/title_activity_account_info" >
+        </activity>
+        <activity
+            android:name="com.myleshumphreys.accountmanager.activities.CreateAccountActivity"
+            android:label="@string/title_activity_create_account" >
+        </activity>
     </application>
 
 </manifest>

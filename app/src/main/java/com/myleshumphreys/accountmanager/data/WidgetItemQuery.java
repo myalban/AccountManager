@@ -20,7 +20,7 @@ public class WidgetItemQuery {
             + ") ";
 
     public static final String INSERT_DEFAULT_DATA = "INSERT INTO " + TABLE_NAME
-            + "(" + COLUMN_ID + COLUMN_NAME + COLUMN_TYPE + ") VALUES ( 1, EditView, association, 1) ";
+            + "(id, widgetName, widgetType, widgetImageId ) VALUES ( 1, 'TextView', 'EmailAddress' , 1 )";
 
     private Context context = null;
 

@@ -8,6 +8,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.myleshumphreys.accountmanager.R;
@@ -45,6 +49,7 @@ public class AccountListActivity extends Activity {
         setContentView(R.layout.activity_account_list);
         accountListView = (ListView) findViewById(R.id.listViewAccountList);
         populateAccountList();
+        accountListener();
     }
 
     private void addItemsToAccountList() {
@@ -68,6 +73,25 @@ public class AccountListActivity extends Activity {
     private void populateAccountList() {
         accountListAdapter = new AccountListAdapter(this, accountList);
         accountListView.setAdapter(accountListAdapter);
+    }
+
+    public void accountListener() {
+        accountListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Account accountItem = accountList.get(position);
+                int accountId = accountItem.getId();
+                Intent intentAccountInfo = new Intent(getApplicationContext(), AccountInfoActivity.class);
+                intentAccountInfo.putExtra("accountId", accountId);
+                startActivity(intentAccountInfo);
+            }
+        });
+    }
+
+    private void createAccount() {
+        Intent intentCreateAccount = new Intent(getApplicationContext(), CreateAccountActivity.class);
+        intentCreateAccount.putExtra("userId", userId);
+        startActivity(intentCreateAccount);
     }
 
     private void logout() {
@@ -94,6 +118,29 @@ public class AccountListActivity extends Activity {
                 });
 
         logoutAlert.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_account_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_new_account) {
+            createAccount();
+            return true;
+        }
+
+        if (id == R.id.action_logout) {
+            logoutDialog();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

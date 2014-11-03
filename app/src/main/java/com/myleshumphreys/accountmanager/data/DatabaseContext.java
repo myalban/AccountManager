@@ -25,9 +25,9 @@ public class DatabaseContext extends SQLiteOpenHelper {
 
         _db.execSQL(UserQuery.INSERT_DEFAULT_DATA);
         _db.execSQL(AccountQuery.INSERT_DEFAULT_DATA);
+        _db.execSQL(AccountInfoQuery.INSERT_DEFAULT_DATA);
 
-       // _db.execSQL(WidgetItemImageQuery.INSERT_DEFAULT_DATA);
-        //_db.execSQL(WidgetItemQuery.INSERT_DEFAULT_DATA);
+        _db.execSQL(WidgetItemQuery.INSERT_DEFAULT_DATA);
     }
 
     @Override
