@@ -9,7 +9,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.myleshumphreys.accountmanager.R;
 import com.myleshumphreys.accountmanager.data.AccountInfoQuery;
 import com.myleshumphreys.accountmanager.models.AccountInfo;
 
@@ -28,7 +27,6 @@ public class AccountInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_account_info);
         accountInfoQuery = new AccountInfoQuery(getApplicationContext());
         addLayout();
         accountInfoList = new ArrayList<AccountInfo>();
@@ -72,5 +70,18 @@ public class AccountInfoActivity extends Activity {
         linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         scrollView.addView(linearLayout);
+    }
+
+    private void updateAccountAssociation(){
+
+    }
+
+    private void EndActivity() {
+        AccountInfoActivity.this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        EndActivity();
     }
 }

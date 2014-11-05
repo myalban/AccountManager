@@ -1,5 +1,6 @@
 package com.myleshumphreys.accountmanager.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -33,6 +34,15 @@ public class AccountQuery {
         this.context = context;
     }
 
+    public void create(Account account) {
+        SQLiteDatabase db = DatabaseContext.getInstance(this.context).getWritableDatabase();
+        ContentValues accountValues = new ContentValues();
+        accountValues.put(COLUMN_ASSOCIATION, account.getName());
+        accountValues.put(COLUMN_USER_ID, account.getUserId());
+        db.insert(TABLE_NAME, null, accountValues);
+        db.close();
+    }
+
     public List<Account> getAllAccounts(int userId) {
         List<Account> accounts = new ArrayList<Account>();
         SQLiteDatabase db = DatabaseContext.getInstance(this.context).getReadableDatabase();
@@ -51,6 +61,16 @@ public class AccountQuery {
         cursor.close();
         db.close();
         return accounts;
+    }
+
+    public int getCount() {
+        SQLiteDatabase db = DatabaseContext.getInstance(this.context).getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        db.close();
+        cursor.close();
+        return count;
     }
 
     public int getCountById(int userId) {

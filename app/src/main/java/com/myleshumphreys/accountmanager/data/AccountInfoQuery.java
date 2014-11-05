@@ -1,5 +1,6 @@
 package com.myleshumphreys.accountmanager.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,6 +35,26 @@ public class AccountInfoQuery {
 
     public AccountInfoQuery(Context context) {
         this.context = context;
+    }
+
+    public void create(AccountInfo accountInfo) {
+        SQLiteDatabase db = DatabaseContext.getInstance(this.context).getWritableDatabase();
+        ContentValues accountValues = new ContentValues();
+        accountValues.put(COLUMN_VALUE, accountInfo.getValue());
+        accountValues.put(COLUMN_ACCOUNT_ID, accountInfo.getAccountId());
+        accountValues.put(COLUMN_WIDGET_ID, accountInfo.getWidgetId());
+        db.insert(TABLE_NAME, null, accountValues);
+        db.close();
+    }
+
+    public int getCount() {
+        SQLiteDatabase db = DatabaseContext.getInstance(this.context).getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        db.close();
+        cursor.close();
+        return count;
     }
 
     public List<AccountInfo> getAccountInfo(int accountId) {
